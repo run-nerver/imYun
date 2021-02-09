@@ -1,0 +1,53 @@
+version: "3"
+
+services:
+  mysql:
+    image: mysql:1
+    container_name: mysql
+    build: ./mysql
+    command: [
+      '--character-set-server=utf8mb4',
+      '--collation-server=utf8mb4_unicode_ci',
+    ]
+    ports:
+      - "3306:3306"
+    volumes:
+      - $HOME/dockerData/mysql:/var/lib/mysql/
+      - ./mysql/init:/docker-entrypoint-initdb.d/
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_DATABASE=PrintYun
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
+  golang:
+    container_name: imYun_backend
+    restart: always
+    build:
+      context: ../imYun_backend/
+      dockerfile: ./Dockerfile
+    ports:
+      - "5000:5000"
+    links:
+      - "mysql"
+      - "redis"
+    volumes:
+      - $HOME/dockerData/go:/go
+    tty: true
+    depends_on: 
+      - mysql
+      - redis
+  web:
+    container_name: imYun_frontend
+    restart: always
+    build:
+      context: ../imYun_frontend/
+      dockerfile: ./Dockerfile
+    ports:
+      - "9527:9527"
+    privileged: true
+    volumes:
+      - $HOME/dockerData/weblog:/var/log/nginx
+    depends_on: 
+      - golang
