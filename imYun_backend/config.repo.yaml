@@ -1,0 +1,23 @@
+host: 0.0.0.0
+port: 5000                                  #端口
+db: #mysql
+  host: 127.0.0.1   # 数据库地址
+  port: 3306            #数据库端口
+  name: PrintYun    #数据库名称
+  username: root          #数据库用户名
+  password: 123456   #数据库密码
+redis: #redis
+  host: 127.0.0.1
+  port: 6379
+  password:
+  db0: 0
+  db1: 1
+  db2: 2
+wechat: # 如果不了解, 只需要修改这里
+  appid: ""                 # 微信小程序 APPPID
+  secret: ""  # 微信小程序 Secret
+oss:
+  enable: "false"
+  accessKeyID: "XXXXXXXXXXXXXXXXXXXXXXXX"
+  accessKeySecret: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+  endpoint: "XXXXXXXXXXXXXXXXXXXXXXXXXXXX"
