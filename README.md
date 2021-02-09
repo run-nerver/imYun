@@ -8,7 +8,8 @@
 ## imYun打印流程:
 用户通过小程序上传文件&rarr;店主在线预览(下载)&打印  
 ## 系统截图:
-
+![后台](https://github.com/run-nerver/imYun/blob/main/images/%E5%89%8D%E7%AB%AF%E9%A6%96%E9%A1%B5.png)  
+![小程序](https://github.com/run-nerver/imYun/blob/main/images/%E5%B0%8F%E7%A8%8B%E5%BA%8F.jpg)
 ## 使用说明:
 ### - 本机测试(此种方式仅供测试使用，如果开店用请移步至下面公网部署)
 1、确保机器安装docker及docker-compose  
