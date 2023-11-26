@@ -26,7 +26,8 @@ docker-compose up
 2、下载源码，修改imYun_backend/config.repo.yaml下的wechat的appid和secret为自己小程序的。  
 3、将imYun_frontend/src/api/global_variable.js中的127.0.0.1修改为服务器IP或域名(后面的:5000不要修改)。还有.env开头的文件名里的127.0.0.1也要替换    
 4、修改[小程序端](https://github.com/run-nerver/imYun_wx)api/url.js下的URL_SERVER的127.0.0.1为服务器IP，按照微信官方步骤将小程序发布(如果仅测试，使用小程序开发工具打开)  
-5、
+5、因为在docker里mysql还没完全启动就启动后端了，所以在启动后需稍等一会重启imYun_backend容器  
+6、
 ```
 cd docker
 docker-compose up
