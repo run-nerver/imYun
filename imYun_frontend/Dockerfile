@@ -1,5 +1,5 @@
 # node镜像
-FROM node:latest as build-stage
+FROM node:16.14.0 as build-stage
 
 RUN echo "-------------------- web环境配置 --------------------"
 
@@ -10,10 +10,12 @@ ADD . /app/
 # RUN chmod +x docker_init.sh
 # RUN sh docker_init.sh
 # 设置淘宝npm镜像
-RUN npm install -g cnpm --registry=https://registry.npm.taobao.org
+RUN npm install -g cnpm --registry=http://registry.npmmirror.com
 # 安装依赖
 RUN cnpm install
-
+RUN cnpm install --save body-parser
+RUN cnpm install --save core-js
+RUN cnpm install --save svg-baker-runtime
 # 打包 - 目的：丢到nginx下跑
 RUN cnpm run build:prod
 
